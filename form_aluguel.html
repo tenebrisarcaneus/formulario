@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação de Aluguel de Notebook - Assinatura Gov.br</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inconsolata:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
+</head>
+
+<body>
+
+    <div class="container">
+        <div style="margin-bottom: 20px;">
+             <a href="javascript:history.back()" style="text-decoration: none; color: #555; font-size: 0.9em;">&larr; Voltar</a>
+             <span style="margin: 0 10px; color: #ccc;">|</span>
+             <a href="index.html" style="text-decoration: none; color: #555; font-size: 0.9em;">Página Inicial</a>
+        </div>
+
+        <h1>Solicitação de Aluguel de Notebook</h1>
+        <p>Preencha seus dados para gerar o contrato de locação em formato .PDF. A assinatura será realizada por você no portal oficial <a href="https://assinador.iti.br/" target="_blank">assinador.iti.br</a>.</p>
+
+        <form id="rentalForm">
+
+            <fieldset>
+                <legend>Dados Pessoais do Locatário</legend>
+                <label for="nomeCompleto">Nome Completo:</label>
+                <input type="text" id="nomeCompleto" name="nomeCompleto" required placeholder="Seu nome completo">
+
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" required placeholder="000.000.000-00" maxlength="14">
+
+                <label for="rg">RG:</label>
+                <input type="text" id="rg" name="rg" required placeholder="Seu número de RG">
+
+                <label for="endereco">Endereço Completo:</label>
+                <input type="text" id="endereco" name="endereco" required placeholder="Rua, Número, Bairro, Cidade - Estado, CEP">
+
+                <label for="telefone">Telefone (WhatsApp):</label>
+                <input type="text" id="telefone" name="telefone" required placeholder="(00) 00000-0000" maxlength="15">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
+            </fieldset>
+
+            <fieldset>
+                <legend>Detalhes do Aluguel</legend>
+                <label for="notebook">Notebook Desejado:</label>
+                <select id="notebook" name="notebook" required>
+                    <option value="" disabled selected>-- Selecione um modelo --</option>
+                    <option value="Notebook Básico HD">Notebook Básico HD</option>
+                    <option value="Notebook Básico SSD">Notebook Básico SSD</option>
+                    <option value="Notebook Intermediário">Notebook Intermediário (Ex: i5/8GB)</option>
+                    <option value="Notebook Profissional">Notebook Profissional (Ex: i7/16GB)</option>
+                    <option value="MacBook Air M1">MacBook Air M1</option>
+                     <option value="Notebook Gamer Entrada">Notebook Gamer (Entrada)</option>
+                    <option value="Outro">Outro (Especificar na mensagem/contato)</option>
+                </select>
+
+                <label for="dataInicio">Data de Início:</label>
+                <input type="date" id="dataInicio" name="dataInicio" required>
+
+                <label for="dataTermino">Data de Término:</label>
+                <input type="date" id="dataTermino" name="dataTermino" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Termos e Geração do Contrato</legend>
+
+                <div class="consent-section">
+                     <input type="checkbox" id="consentimento" name="consentimento" required>
+                     <label for="consentimento" class="consent-label">
+                        Declaro ter lido e concordado com os <a href="termos.html" target="_blank">Termos de Uso</a> e a <a href="privacidade.html" target="_blank">Política de Privacidade</a>. Estou ciente de que, ao clicar no botão abaixo, um arquivo de contrato (.pdf) será gerado para download e que deverei assiná-lo utilizando minha conta Gov.br no portal oficial <a href="https://assinador.iti.br/" target="_blank">assinador.iti.br</a>.
+                    </label>
+                </div>
+
+                <button type="button" id="generateContractButton">Gerar Contrato (.PDF) e Ver Instruções para Assinatura</button>
+                <div id="validationMessage" class="validation-message"></div>
+
+            </fieldset>
+
+            <div id="contractOutputArea" class="output-area" style="display: none;">
+                <h2>Contrato Gerado (Prévia)</h2>
+                <p>O download do arquivo <strong>PDF</strong> (`contrato_locacao_notebook_*.pdf`) deve ter iniciado. Verifique sua pasta de downloads. Siga os passos abaixo:</p>
+                <pre id="contractText"></pre>
+                 <div id="govBrInstructions" class="instructions-box">
+                    <h3>Próximos Passos - Assinatura Gov.br (via Assinador ITI)</h3>
+                    <p>✅ <strong>PASSO 1: Verifique o Download</strong></p>
+                    <p>Confirme se o arquivo <strong>PDF</strong> (`contrato_locacao_notebook_*.pdf`) foi baixado em seu computador ou dispositivo.</p>
+                    <hr>
+                    <p>➡️ <strong>PASSO 2: Acesse o Assinador Oficial</strong></p>
+                    <p>Clique no link abaixo ou copie e cole no seu navegador para ir ao site oficial de assinaturas do Governo Federal:</p>
+                    <p style="text-align: center; margin: 10px 0;">
+                        <a href="https://assinador.iti.br/" target="_blank" rel="noopener noreferrer" style="font-size: 1.1em; font-weight: bold; padding: 8px 12px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px;">
+                            Ir para assinador.iti.br
+                        </a>
+                    </p>
+                    <hr>
+                    <p>✍️ <strong>PASSO 3: Assine o Documento no Portal</strong></p>
+                    <ol>
+                        <li>No site `assinador.iti.br`, clique em "Entrar com gov.br" e faça login com sua conta (nível Prata ou Ouro).</li>
+                        <li>Após o login, clique em "<strong>Escolher arquivo</strong>".</li>
+                        <li>Localize e selecione o arquivo <strong>`.pdf`</strong> que você acabou de baixar (o nome começa com `contrato_locacao_notebook_...`).</li>
+                        <li>Clique em "Avançar".</li>
+                        <li>Na área de assinatura (geralmente à direita), clique em "<strong>Assinar</strong>".</li>
+                        <li>Selecione seu certificado Gov.br (normalmente seu CPF) e siga as instruções na tela (pode pedir senha do Gov.br ou código do aplicativo Gov.br).</li>
+                    </ol>
+                    <hr>
+                    <p>📩 <strong>PASSO 4: Baixe e Nos Envie o Documento Assinado</strong></p>
+                    <ol>
+                        <li>Após assinar com sucesso, o Assinador ITI mostrará o documento finalizado. Clique no botão "<strong>Baixar</strong>" para salvar este arquivo assinado. Ele terá a extensão <strong>`.p7s`</strong> (esse é o arquivo que precisamos!).</li>
+                        <li><strong>MUITO IMPORTANTE:</strong> Envie este arquivo `.p7s` (o documento assinado) para nós através de UM dos seguintes canais:</li>
+                        <li><strong>E-mail:</strong> contato@aluguenote.ficticio.com </li>
+                        <li><strong>OU WhatsApp:</strong> (99) 98154-3912 </li>
+                        <li>Sua locação só será efetivada após o recebimento e validação deste arquivo `.p7s` por nossa equipe.</li>
+                    </ol>
+                    <hr>
+                    <p>Em caso de dúvidas sobre como usar o `assinador.iti.br` ou sobre o envio do arquivo `.p7s`, entre em contato conosco pelos canais acima.</p>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script src="script2.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productFromUrl = urlParams.get('product');
+            const notebookSelect = document.getElementById('notebook');
+
+            if (productFromUrl && notebookSelect) {
+                // Tenta encontrar uma opção que corresponda (ignorando case e espaços extras)
+                const productNameNormalized = productFromUrl.trim().toLowerCase();
+                let foundOption = false;
+                for (let i = 0; i < notebookSelect.options.length; i++) {
+                    const optionTextNormalized = notebookSelect.options[i].text.trim().toLowerCase();
+                    const optionValueNormalized = notebookSelect.options[i].value.trim().toLowerCase();
+                     // Verifica se o nome do produto da URL está contido no texto ou valor da opção
+                     if (optionValueNormalized.includes(productNameNormalized) || optionTextNormalized.includes(productNameNormalized)) {
+                        notebookSelect.value = notebookSelect.options[i].value;
+                        foundOption = true;
+                        break;
+                    }
+                }
+                 // Se não encontrou correspondência exata mas o produto veio da URL,
+                 // adiciona como uma nova opção (ou seleciona 'Outro' se existir)
+                 if (!foundOption) {
+                    let outroOption = notebookSelect.querySelector('option[value="Outro"]');
+                    if (outroOption) {
+                        outroOption.selected = true;
+                        // Poderia adicionar o nome do produto em outro campo ou nota
+                        console.warn(`Produto "${productFromUrl}" não encontrado exatamente no select, selecionando "Outro".`);
+                    } else {
+                        // Se nem 'Outro' existe, adiciona a opção
+                        const newOption = document.createElement('option');
+                        newOption.value = productFromUrl; // Usa o nome da URL como valor
+                        newOption.textContent = productFromUrl + " (via URL)";
+                        newOption.selected = true;
+                        notebookSelect.appendChild(newOption);
+                         console.warn(`Produto "${productFromUrl}" não encontrado, adicionado ao select.`);
+                    }
+                 }
+            }
+        });
+    </script>
+</body>
+</html>
+
