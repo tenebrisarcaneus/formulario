@@ -22,9 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // #########################################################################
     // #####       PREENCHA COM SEUS DADOS REAIS ABAIXO                  #####
     // #########################################################################
-    const locadorNome = "TecAluga SMM";
-    const locadorIdentificacao = "CNPJ: 101.693.043-70"; // Ajustado conforme seu último script
-    const locadorEndereco = "Rua Exemplo, 123, Bairro, São Mateus do Maranhão - MA, CEP 00000-000"; // Ajustado
+    const locadorNome = "Davi Silva dos Santos";
+    const locadorIdentificacao = "CPF: 101.693.043-70"; // Ajustado conforme seu último script
+    const locadorEndereco = "Rua Santa Luzia, 26, Vaquejada, São Mateus do Maranhão - MA, CEP 65.470-000"; // Ajustado
     const seuNomeParaAssinatura = locadorNome;
     const suaCidade = "São Mateus do Maranhão";
     const seuEstado = "MA";
